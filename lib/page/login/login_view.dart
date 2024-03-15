@@ -5,6 +5,8 @@
 import 'package:flutter/material.dart';
 import 'package:likeai/config/common.dart';
 import 'package:likeai/config/font.dart';
+import 'package:likeai/page/aiPet/aiPet_controller.dart';
+import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -103,6 +105,9 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    AiPetController? controller;
+    controller = Provider.of<AiPetController>(context, listen: false);
+
     return Scaffold(
       //floatingActionButton: helpFBtn(context, "helpAccount"),
       body: Center(
@@ -121,7 +126,9 @@ class _LoginState extends State<Login> {
 
                 InkWell(
                   onTap: () {
-                    if (_emailController.text.length <= 0 || _pwController.text.length <= 0) {
+                    controller?.showAlertAiPet();
+
+                    /*  if (_emailController.text.length <= 0 || _pwController.text.length <= 0) {
                       //이메일 또는 패스워드에 값이 없으면
                       // myShowSnackBar1(context, "이메일 또는 패스워드를 입력해주세요.");
                     } else {
@@ -137,7 +144,7 @@ class _LoginState extends State<Login> {
                         _emailController.clear();
                         _pwController.clear();
                       }
-                    }
+                    }*/
                   },
                   child: Text(
                     "로그인",
