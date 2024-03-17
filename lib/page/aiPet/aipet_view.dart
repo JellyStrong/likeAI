@@ -4,24 +4,18 @@ import 'package:likeai/page/aiPet/aiPet_controller.dart';
 import 'package:provider/provider.dart';
 
 Widget aiPet(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  size.width;
-  size.height;
   AiPetController? controller;
   controller = Provider.of<AiPetController>(context, listen: false);
-
-  List<String> menuItem = <String>["회원가입", "정보찾기", "도움말"];
 
   return Positioned(
     bottom: 10,
     right: 5,
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        //말풍선 디폴트값 flasa;
         Consumer<AiPetController>(builder: (context, value, child) {
           return Visibility(visible: controller!.alertAiPetVal, child: Text("안녕하세요."));
         }),
-        //Consumer<>(builder: ),
         Row(
           children: [
             Consumer<AiPetController>(builder: (context, value, child) {
@@ -41,26 +35,13 @@ Widget aiPet(BuildContext context) {
                         spacing: 10, //상하(좌우)공간
                         runSpacing: 10, //좌우(상하)공간
                         children: [
-                          chips("회원가입", Colors.white, Colors.yellow),
-                          chips("계정찾기", Colors.white, Colors.orange),
-                          chips("도움", Colors.white, Colors.blue),
-                          chips("도움", Colors.white, Colors.blue),
-                          chips("도움", Colors.white, Colors.blue),
-                          chips("도움", Colors.white, Colors.blue),
+                          menuAipet("회원가입", Colors.white, Colors.yellow, context, "/join"),
+                          menuAipet("계정찾기", Colors.white, Colors.orange, context, "/find"),
+                          menuAipet("도움", Colors.white, Colors.blue, context, "/help"),
+                          menuAipet("도움", Colors.white, Colors.blue, context, ""),
                         ],
                       ),
                     ),
-
-                    // child: ListView.builder(
-                    //   scrollDirection: Axis.horizontal,
-                    //   itemCount: menuItem.length,
-                    //   itemBuilder: (BuildContext context, int index) {
-                    //     print(index);
-                    //     return Text(
-                    //       menuItem[index],
-                    //     );
-                    //   },
-                    // ),
                   ),
                 ),
               );

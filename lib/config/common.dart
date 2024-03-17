@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class HelpAIPet extends StatelessWidget {
   final VoidCallback onpressed;
@@ -42,18 +45,18 @@ deviceSize(BuildContext context) {
   alert창
   */
 /* 알림 delay */
-Widget alertAiPet(String msg, int milliseconds) {
-  Future.delayed(
-    Duration(milliseconds: milliseconds),
-    () {
-      print("하하");
-    },
-  );
-  return Column(
-    children: [
-      Text(msg),
-    ],
-  );
+alertAiPet(String msg, int milliseconds) {
+  Timer(Duration(milliseconds: milliseconds), () {
+    Column(
+      children: [
+        Text(msg),
+      ],
+    );
+  });
+}
+
+Future<bool> sadasd() async {
+  return Future.delayed(Duration(microseconds: 3000)).then((value) => true);
 }
 
 /* 확인 */
@@ -74,10 +77,10 @@ Widget alertAiPet2(String msg) {
   ]);
 }
 
-Widget chips(String label, Color textColor, Color backColor) {
+Widget menuAipet(String label, Color textColor, Color backColor, BuildContext context, String router) {
   return GestureDetector(
     onTap: () {
-      print("sad");
+      context.go(router);
     },
     child: Chip(
       label: Text(
@@ -87,7 +90,7 @@ Widget chips(String label, Color textColor, Color backColor) {
       backgroundColor: backColor,
       elevation: 3.0,
       shadowColor: Colors.grey,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         side: BorderSide(color: Color(0x00FFFFFF)),
         borderRadius: BorderRadius.all(
           Radius.circular(17),

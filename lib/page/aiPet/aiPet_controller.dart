@@ -37,8 +37,8 @@ class AiPetController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void showAlertAiPet() {
-    _model.alertAiPetMessage();
+  void showAlertAiPet(bool show) {
+    _model.alertAiPetMessage(show);
     notifyListeners();
   }
 }

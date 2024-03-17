@@ -2,8 +2,9 @@
 // import 'package:app1/common/message.dart';
 // import 'package:app1/style/font.dart';
 // import 'package:go_router/go_router.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:likeai/config/common.dart';
 import 'package:likeai/config/font.dart';
 import 'package:likeai/page/aiPet/aiPet_controller.dart';
 import 'package:provider/provider.dart';
@@ -126,7 +127,12 @@ class _LoginState extends State<Login> {
 
                 InkWell(
                   onTap: () {
-                    controller?.showAlertAiPet();
+                    controller?.showAlertAiPet(true);
+                    Timer(Duration(seconds: 1), () {
+                      //_alertAiPetVal = false;
+
+                      controller?.showAlertAiPet(false);
+                    });
 
                     /*  if (_emailController.text.length <= 0 || _pwController.text.length <= 0) {
                       //이메일 또는 패스워드에 값이 없으면

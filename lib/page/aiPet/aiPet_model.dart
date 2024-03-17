@@ -15,6 +15,8 @@
 //   }
 // }
 
+import 'dart:async';
+
 class Model {
   bool _menuAiPetVal = false;
   bool _alertAiPetVal = false;
@@ -30,7 +32,18 @@ class Model {
 //AIPet Alert
 //delay 3초
 //확인,취소
-  bool alertAiPetMessage() {
-    return _alertAiPetVal = !_alertAiPetVal;
+  bool alertAiPetMessage(bool show) {
+    _alertAiPetVal = show;
+
+    print(_alertAiPetVal);
+
+    // Future.delayed(Duration(seconds: 1), () async {
+    //   print(milliseconds);
+    //   _alertAiPetVal = false;
+    //   print(_alertAiPetVal);
+
+    // });
+    print(">>>>>>>>   ${show}");
+    return _alertAiPetVal;
   }
 }
